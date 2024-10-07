@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>CSDN文件自助下载</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="${ctxPath}/static/down/assets/css/main.css" />
+		<script src="${ctxPath}/static/js/jquery.min.js?v=2.1.4"></script>
+		<noscript><link rel="stylesheet" href="${ctxPath}/static/down/assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main">
+
+						<h2>CSDN文件自助下载</h2>
+						<form>
+							<div class="fields">
+								<div class="field">
+									<input type="text" name="code" id="code" placeholder="下载码" />
+								</div>
+								<div class="field">
+									<input type="text" name="downUrl" id="downUrl" placeholder="下载地址" />
+								</div>
+
+							</div>
+							<ul class="actions special">
+								<li><a href="#" class="button" onclick="submit()">下载</a></li>
+							</ul>
+						</form>
+
+						<h2 style="display: none;color: red" id="tip"></h2>
+
+
+						<hr />
+						
+
+					
+					</section>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<ul class="copyright">
+
+						</ul>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script>
+
+				if ('addEventListener' in window) {
+					window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-preload\b/, ''); });
+					document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+				}
+
+                $("#code").val(getParam("code"))
+				function submit() {
+				    var code=$("#code").val();
+				    var downUrl=$("#downUrl").val();
+                    $.ajax({ url: "/apiDownload/getFile",data: {"code":code,"downUrl":downUrl}, success: function(response){
+                            if(response.status==1){
+								$("#tip").html("正在下载！并请允许浏览器弹出窗口！");
+                                window.location.href=response.result;
+							}else{
+                                $("#tip").html(response.msg);
+                                $("#tip").show();
+							}
+                     }});
+                }
+
+                /**
+                 * 获取指定的URL参数值
+                 * URL:http://www.quwan.com/index?name=tyler
+                 * 参数：paramName URL参数
+                 * 调用方法:getParam("name")
+                 * 返回值:tyler
+                 */
+                function getParam(paramName) {
+                    paramValue = "", isFound = !1;
+                    if (this.location.search.indexOf("?") == 0 && this.location.search.indexOf("=") > 1) {
+                        arrSource = unescape(this.location.search).substring(1, this.location.search.length).split("&"), i = 0;
+                        while (i < arrSource.length && !isFound) arrSource[i].indexOf("=") > 0 && arrSource[i].split("=")[0].toLowerCase() == paramName.toLowerCase() && (paramValue = arrSource[i].split("=")[1], isFound = !0), i++
+                    }
+                    return paramValue == "" && (paramValue = null), paramValue
+                }
+			</script>
+
+	</body>
+</html>

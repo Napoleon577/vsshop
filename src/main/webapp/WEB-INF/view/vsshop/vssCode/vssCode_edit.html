@@ -1,0 +1,60 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+            <input id="statusValue" type="hidden"  value="${item.status}">
+            <input id="sourceValue" type="hidden"  value="${item.source}">
+            <input id="typeValue" type="hidden"   value="${item.type}">
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="uuid" name="uuid" value="${item.uuid}" underline="true"/>
+                            <#input id="code" name="激活码" value="${item.code}" underline="true"/>
+                            <#input id="downUrl" name="下载地址" value="${item.downUrl}" underline="true"/>
+                            <#input id="filePath" name="文件地址" value="${item.filePath}" underline="true"/>
+                    <label class="col-sm-3 control-label">类型</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" id="status" name="status">
+                            <option value="1">未使用</option>
+                            <option value="2">已使用</option>
+                            <option value="3">作废</option>
+                        </select>
+                    </div>
+                            <#input id="ip" name="ip" value="${item.ip}" underline="true"/>
+                            <#input id="name" name="姓名" value="${item.name}" underline="true"/>
+                            <#input id="tel" name="手机号" value="${item.tel}" />
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="wx" name="微信" value="${item.wx}" underline="true"/>
+                            <#input id="email" name="邮箱" value="${item.email}" underline="true"/>
+                            <#input id="coin" name="积分" value="${item.coin}" underline="true"/>
+                    <label class="col-sm-3 control-label">来源</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" id="source" name="source" >
+                            <option value="1">csdn</option>
+                            <option value="0">无</option>
+                        </select>
+                    </div>
+                    <label class="col-sm-3 control-label">类型</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" id="type" name="type">
+                            <option value="1">通用</option>
+                            <option value="2">大积分</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="VssCodeInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="VssCodeInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/vsshop/vssCode/vssCode_info.js"></script>
+@}

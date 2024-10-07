@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.modular.vsshop.dao.VssLogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.modular.vsshop.model.VssLog">
+        <id column="uuid" property="uuid" />
+        <result column="reuse" property="reuse" />
+        <result column="code" property="code" />
+        <result column="coin" property="coin" />
+        <result column="source" property="source" />
+        <result column="vssuser" property="vssuser" />
+        <result column="down_url" property="downUrl" />
+        <result column="file_path" property="filePath" />
+        <result column="insert_time" property="insertTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        uuid, reuse, code, coin, source, vssuser, down_url, file_path, insert_time
+    </sql>
+
+</mapper>

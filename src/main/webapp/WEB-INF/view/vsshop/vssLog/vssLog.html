@@ -1,0 +1,43 @@
+@layout("/common/_container.html"){
+<style type="text/css">
+    table{
+        min-width: 2200px;
+    }
+</style>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>下载日志管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#NameCon id="code" name="激活码" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#button name="搜索" icon="fa-search" clickFun="VssLog.search()"/>
+                            </div>
+                        </div>
+                        <div class="hidden-xs" id="VssLogTableToolbar" role="group">
+                            @if(shiro.hasPermission("/vssLog/add")){
+                                <#button name="添加" icon="fa-plus" clickFun="VssLog.openAddVssLog()"/>
+                            @}
+                            @if(shiro.hasPermission("/vssLog/update")){
+                                <#button name="查看" icon="fa-edit" clickFun="VssLog.openVssLogDetail()" space="true"/>
+                            @}
+                        </div>
+                        <div style="overflow:scroll;">
+                            <#table id="VssLogTable"/>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/vsshop/vssLog/vssLog.js"></script>
+@}
