@@ -71,19 +71,19 @@ public class DownDemo {
                 String responseBody = readInputStream(responseStream);
                 System.out.println("Response Body: " + responseBody); // 打印响应内容以调试
 
-                // 检查返回内容是否以 "{" 开始
-                if (responseBody.trim().startsWith("{")) {
-                    // 使用 org.json 解析返回的响应
-                    JSONObject jsonObject = new JSONObject(responseBody);
-                    if (jsonObject.get) {
-                        // 提取 data 字段中的真实下载地址
-                        return jsonObject.getString("data");
-                    } else {
-                        System.out.println("请求失败，错误信息：" + jsonObject.getString("message"));
-                    }
-                } else {
-                    System.out.println("返回的响应不是一个有效的 JSON 对象！");
-                }
+//                // 检查返回内容是否以 "{" 开始
+//                if (responseBody.trim().startsWith("{")) {
+//                    // 使用 org.json 解析返回的响应
+//                    JSONObject jsonObject = new JSONObject(responseBody);
+//                    if (jsonObject.get) {
+//                        // 提取 data 字段中的真实下载地址
+//                        return jsonObject.getString("data");
+//                    } else {
+//                        System.out.println("请求失败，错误信息：" + jsonObject.getString("message"));
+//                    }
+//                } else {
+//                    System.out.println("返回的响应不是一个有效的 JSON 对象！");
+//                }
             }
         }
         return null;
